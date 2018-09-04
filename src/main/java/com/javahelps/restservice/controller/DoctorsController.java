@@ -1,5 +1,4 @@
 package com.javahelps.restservice.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,47 +10,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.javahelps.restservice.entity.User;
-import com.javahelps.restservice.repository.UserRepository;
-
+import com.javahelps.restservice.entity.Doctors;
+import com.javahelps.restservice.repository.DoctorsRepository;
 import javassist.tools.web.BadHttpRequest;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(path = "/users")
-public class UserController {
+@RequestMapping(path = "/doctors")
+public class DoctorsController {
 
     @Autowired
-    private UserRepository repository;
+    private DoctorsRepository repository;
 
     @GetMapping
-    public Iterable<User> findAll() {
+    public Iterable<Doctors> findAll() {
         return repository.findAll();
     }
 
-    @GetMapping(path = "/{username}")
-    public User find(@PathVariable("username") String username) {
-        return repository.findOne(username);
+    @GetMapping(path = "/{adsoyad}")
+    public Doctors find(@PathVariable("adsoyad") String adsoyad) {
+        return repository.findOne(adsoyad);
     }
 
     @PostMapping(consumes = "application/json")
-    public User create(@RequestBody User user) {
-        return repository.save(user);
+    public Doctors create(@RequestBody Doctors doctor) {
+        return repository.save(doctor);
     }
 
-    @DeleteMapping(path = "/{username}")
-    public void delete(@PathVariable("username") String username) {
-        repository.delete(username);
+    @DeleteMapping(path = "/{adsoyad}")
+    public void delete(@PathVariable("adsoyad") String adsoyad) {
+        repository.delete(adsoyad);
     }
 
-    @PutMapping(path = "/{username}")
-    public User update(@PathVariable("username") String username, @RequestBody User user) throws BadHttpRequest {
-        if (repository.exists(username)) {
-            user.setUsername(username);
-            return repository.save(user);
+    @PutMapping(path = "/{adsoyad}")
+    public Doctors update(@PathVariable("adsoyad") String adsoyad, @RequestBody Doctors doctor) throws BadHttpRequest {
+        if (repository.exists(adsoyad)) {
+            doctor.setAdsoyad(adsoyad);
+            return repository.save(doctor);
         } else {
             throw new BadHttpRequest();
         }
     }
-
 }
