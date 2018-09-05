@@ -26,9 +26,9 @@ public class HastalarController {
         return repository.findAll();
     }
 
-    @GetMapping(path = "/{adsoyad}")
-    public Hastalar find(@PathVariable("adsoyad") String adsoyad) {
-        return repository.findOne(adsoyad);
+    @GetMapping(path = "/{kimlikno}")
+    public Hastalar find(@PathVariable("kimlikno") String kimlikno) {
+        return repository.findOne(kimlikno);
     }
 
     @PostMapping(consumes = "application/json")
@@ -36,15 +36,15 @@ public class HastalarController {
         return repository.save(hasta);
     }
 
-    @DeleteMapping(path = "/{adsoyad}")
-    public void delete(@PathVariable("adsoyad") String adsoyad) {
-        repository.delete(adsoyad);
+    @DeleteMapping(path = "/{kimlikno}")
+    public void delete(@PathVariable("kimlikno") String kimlikno) {
+        repository.delete(kimlikno);
     }
 
-    @PutMapping(path = "/{adsoyad}")
-    public Hastalar update(@PathVariable("adsoyad") String adsoyad, @RequestBody Hastalar hasta) throws BadHttpRequest {
-        if (repository.exists(adsoyad)) {
-            hasta.setAdsoyad(adsoyad);
+    @PutMapping(path = "/{kimlikno}")
+    public Hastalar update(@PathVariable("kimlikno") String kimlikno, @RequestBody Hastalar hasta) throws BadHttpRequest {
+        if (repository.exists(kimlikno)) {
+            hasta.setKimlikno(kimlikno);
             return repository.save(hasta);
         } else {
             throw new BadHttpRequest();

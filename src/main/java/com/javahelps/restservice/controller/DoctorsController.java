@@ -27,9 +27,9 @@ public class DoctorsController {
         return repository.findAll();
     }
 
-    @GetMapping(path = "/{adsoyad}")
-    public Doctors find(@PathVariable("adsoyad") String adsoyad) {
-        return repository.findOne(adsoyad);
+    @GetMapping(path = "/{kullaniciadi}")
+    public Doctors find(@PathVariable("kullaniciadi") String kullaniciadi) {
+        return repository.findOne(kullaniciadi);
     }
 
     @PostMapping(consumes = "application/json")
@@ -37,15 +37,15 @@ public class DoctorsController {
         return repository.save(doctor);
     }
 
-    @DeleteMapping(path = "/{adsoyad}")
-    public void delete(@PathVariable("adsoyad") String adsoyad) {
-        repository.delete(adsoyad);
+    @DeleteMapping(path = "/{kullaniciadi}")
+    public void delete(@PathVariable("kullaniciadi") String kullaniciadi) {
+        repository.delete(kullaniciadi);
     }
 
-    @PutMapping(path = "/{adsoyad}")
-    public Doctors update(@PathVariable("adsoyad") String adsoyad, @RequestBody Doctors doctor) throws BadHttpRequest {
-        if (repository.exists(adsoyad)) {
-            doctor.setAdsoyad(adsoyad);
+    @PutMapping(path = "/{kullaniciadi}")
+    public Doctors update(@PathVariable("kullaniciadi") String kullaniciadi, @RequestBody Doctors doctor) throws BadHttpRequest {
+        if (repository.exists(kullaniciadi)) {
+            doctor.setKullaniciadi(kullaniciadi);
             return repository.save(doctor);
         } else {
             throw new BadHttpRequest();

@@ -10,10 +10,19 @@ public class Doctors {
      * 
      */
     @Id
-    private String adsoyad;
+    private String kullaniciadi;
+	private String adsoyad;
 	private String unvan;
     private String brans;
     private String ceptel;
+    
+    public String getKullaniciadi() {
+		return kullaniciadi;
+	}
+	public void setKullaniciadi(String kullaniciadi) {
+		this.kullaniciadi = kullaniciadi;
+	}
+	
 	public String getAdsoyad() {
 		return adsoyad;
 	}
@@ -41,7 +50,7 @@ public class Doctors {
 
 	  @Override
 	    public String toString() {
-	        return "Doctors{" + "adsoyad='" + adsoyad + '\'' + ", unvan='" + unvan + '\'' + ", brans='" + brans + '\''
+	        return "Doctors{"+ "kullaniciadi='" + kullaniciadi + '\'' + "adsoyad='" + adsoyad + '\'' + ", unvan='" + unvan + '\'' + ", brans='" + brans + '\''
 	                + ", ceptel='" + ceptel + '\'' + '}';
 	    }
 }
