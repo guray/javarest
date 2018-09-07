@@ -32,6 +32,7 @@ public class DoctorsController {
         return repository.findOne(kullaniciadi);
     }
 
+    
     @PostMapping(consumes = "application/json")
     public Doctors create(@RequestBody Doctors doctor) {
         return repository.save(doctor);
